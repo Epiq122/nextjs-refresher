@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+export const revalidate = 60; // revalidate every 60 seconds
+
 const fetchTodos = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');
   const data = await res.json();
