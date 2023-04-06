@@ -6,23 +6,23 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [data, setData] = useState([]);
+  const [message, setMessage] = useState({});
+
+  //Fetch data from the API route we created
   useEffect(() => {
-    const fetchTodos = async () => {
-      const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const fetchMessage = async () => {
+      const res = await fetch('/api/todos');
       const data = await res.json();
-      setData(data);
+      console.log(data);
+
+      setMessage(data);
     };
-    fetchTodos();
-  });
+    fetchMessage();
+  }, []);
+
   return (
     <main>
-      <h1>Hello next 13</h1>
-      {data.map((todo) => (
-        <div>
-          <h3>{todo.title}</h3>
-        </div>
-      ))}
+      <h1>Home</h1>
     </main>
   );
 }
